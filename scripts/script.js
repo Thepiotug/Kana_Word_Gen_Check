@@ -24,8 +24,7 @@ $(document).ready(function() {
         success: function(data) {
             wordlist2 = data.split("\n");
         }
-    });
-    // get the dictionaries of common words
+    }); // get the dictionaries of common words
 
     $('#generateBtn').click(function() {
         var n = $('#numWordsTxt').val();
@@ -37,16 +36,13 @@ $(document).ready(function() {
             errBox.html("Error: Value must be between 0 and 1000.");
             return;
         } // how many words the code should "generate"
-
         if (hira == false && kata == false ) {
-            errBox.html("Error: None of the checkboxes were checked.")
+            errBox.html("Error: None of the checkboxes were checked.");
             return;
         }
         else {
             errBox.html("");
         }
-
-        var wlength; // the length of both word lists, made it like that because can't be bothered to do an realistic approach to the percentages of katakana it should spew out (~2800 to ~130)
 
         var kana = 0; //init kana - hiragana is 1, katakana is 2, both is 3
         if (hira == true) kana = kana + 1;
@@ -56,25 +52,24 @@ $(document).ready(function() {
         area.val(""); // clear textarea for next use
 
         for (var i = 0; i < n; i++) {
-            if (kana == 3) wlength = wordlist.length + wordlist2.length; // choices opeople, choices
-            else if (kana == 2) wlength = wordlist2.length;//               literally cant think of what
-            else if (kana == 1) wlength = wordlist.length;//                i could do except this (please help)
-            var r = Math.floor(Math.random() * (wlength));// leftover randomization from previous guy, didnt touch 
-            if (kana == 3) { 
-                if(r > wordlist.length) {
-                    area.val(area.val() + wordlist2[(r - wordlist.length)] + " ");// if the number spills over to the list of katakana, spew it out, else hiragana
-                }
-                else if (r < wordlist.length){ 
+            switch (kana) {
+                case 1:
+                    var r = Math.floor(Math.random() * (wordlist.length));
                     area.val(area.val() + wordlist[r] + " ");
-                }
-            } else if (kana == 2) {
-                area.val(area.val() + wordlist2[r] + " ");// katakana only gen
-            } else if (kana == 1) {
-                area.val(area.val() + wordlist[r] + " ");// hiragana only gen
+                case 2:
+                    var r = Math.floor(Math.random() * (wordlist2.length));
+                    area.val(area.val() + wordlist2[r] + " ");
+                case 3:
+                    if ((Math.floor(Math.random() * 80)) < 10) { // explanation: 10% of written japanese is katakana, 70% is hiragana, and ~20% is kanji, so the randomisation in the if makes it more realistic
+                        var r = Math.floor(Math.random() * (wordlist2.length));
+                        area.val(area.val() + wordlist2[r] + " ");
+                    }
+                    else {
+                        var r = Math.floor(Math.random() * (wordlist.length));
+                        area.val(area.val() + wordlist[r] + " ")
+                    };
             }
-        }
-        //this code is so shit
-        //to do, random() of kana: hiragana ~ 70%, katakana ~ 10%, so random out of 80, and if it's less than ten get random of katakana, else random of hiragana
+        } //new, somewhat cleaner randomisation algorithm
     });
 
     $('#romajiCheckBtn').click(function(){
