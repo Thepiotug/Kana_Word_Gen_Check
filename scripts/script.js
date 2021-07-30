@@ -2,7 +2,7 @@ $(document).ready(function() {
     var wordlist = [];
     var wordlist2 = [];
     //init word lists
-    var romaji = {'あ': ['a', 'b'], 'う': ['i'], 'ん': ['n'], 'す': ['su']}; // the list of kana -> romaji translations. used both ways
+    var romaji = {'あ': ['a', 'b'], 'う': ['i'], 'ん': ['n'], 'す': ['su'], 'ぎゃ':['gya']}; // the list of kana -> romaji translations. used both ways
 
 
     $.ajax({
@@ -87,14 +87,25 @@ $(document).ready(function() {
         // else {
         //     area.val(romaji[`う`][0])
         // }
-        for (i in romaji){
-            var aeiou = `su`
-            for (n in romaji[i]){
-                console.log(romaji[i][n])
-                if (romaji[i][n] == aeiou) {
-                    area.val(aeiou)
-                }
-            }
+
+        // for (i in romaji){
+        //     var aeiou = `su`
+        //     for (n in romaji[i]){
+        //         console.log(romaji[i][n])
+        //         if (romaji[i][n] == aeiou) {
+        //             area.val(aeiou)
+        //         }
+        //     }
+        // }
+        for (e in words) {
+            b = parseInt(e-1)
+            if (words[b+1] == 'あ'){
+                console.log(words[b])
+                console.log(words[b+1])
+                console.log('a')
+                console.log(b)
+            }//testing code for recognition of characters, that are like gyo(ぎょ), gya(ぎゃ) etc., so that if combined kana is in the words, it can be skipped
+            
         }
         
         // area.val(romaji['あ'])                                                                       TESTING CODE, DO NOT TOUCH
