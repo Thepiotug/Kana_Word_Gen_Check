@@ -56,9 +56,11 @@ $(document).ready(function() {
                 case 1:
                     var r = Math.floor(Math.random() * (wordlist.length));
                     area.val(area.val() + wordlist[r] + " ");
+                    break;
                 case 2:
                     var r = Math.floor(Math.random() * (wordlist2.length));
                     area.val(area.val() + wordlist2[r] + " ");
+                    break;
                 case 3:
                     if ((Math.floor(Math.random() * 80)) < 10) { // explanation: 10% of written japanese is katakana, 70% is hiragana, and ~20% is kanji, so the randomisation in the if makes it more realistic
                         var r = Math.floor(Math.random() * (wordlist2.length));
