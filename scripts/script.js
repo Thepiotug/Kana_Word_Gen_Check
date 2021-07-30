@@ -86,7 +86,7 @@ $(document).ready(function() {
         area.val(``)
         // if (romaji['あ'].length !== 1) {
         //     area.val(romaji[`う`][1])
-        // }
+        // }                                                                                            TESTING CODE, DO NOT TOUCH
         // else {
         //     area.val(romaji[`う`][0])
         // }
@@ -100,7 +100,7 @@ $(document).ready(function() {
             }
         }
         
-        // area.val(romaji['あ'])
+        // area.val(romaji['あ'])                                                                       TESTING CODE, DO NOT TOUCH
         // for (var letter in words){
         //     console.log(words[letter])
         // }
