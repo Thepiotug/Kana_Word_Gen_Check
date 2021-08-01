@@ -40,18 +40,18 @@ $(document).ready(function() {
             errBox.html("Error: None of the checkboxes were checked.");
             return;
         }
-        else {
-            errBox.html("");
-        }
+        // else {
+        //     errBox.html("");
+        // }
 
         var kana = 0; //init kana - hiragana is 1, katakana is 2, both is 3
-        if (hira == true) kana = kana + 1;
-        if (kata == true) kana = kana + 2;
+        if (hira === true) { kana = kana + 1; }
+        if (kata === true) { kana = kana + 2; }
 
         var area = $('#genWordsArea');
         area.val(""); // clear textarea for next use
 
-        for (var i = 0; i < n; i++) {
+        for (i = 0; i < n; i += 1) {
             switch (kana) {
                 case 1:
                     var r = Math.floor(Math.random() * (wordlist.length));
@@ -75,10 +75,8 @@ $(document).ready(function() {
     });
 
     $('#romajiCheckBtn').click(function(){
-        var wordLength = $('#genWordsArea').val().length;
         var words = $('#genWordsArea').val().replace(/\s/g,'');
         var area = $('#romajiCheck');
-        var test = `b`
 
         area.val(``)
         // if (romaji['あ'].length !== 1) {
@@ -86,8 +84,8 @@ $(document).ready(function() {
         // }                                                                                            TESTING CODE, DO NOT TOUCH
         // else {
         //     area.val(romaji[`う`][0])
-        // }
-
+        // }  // test code for checking if one word has multiple romaji transcriptions
+        //
         // for (i in romaji){
         //     var aeiou = `su`
         //     for (n in romaji[i]){
@@ -96,22 +94,23 @@ $(document).ready(function() {
         //             area.val(aeiou)
         //         }
         //     }
+        // }  // discovering how the fu- am i supposed to make the 2d array work test code
+        //
+        // for (e in words) {
+        //     b = parseInt(e-1)
+        //     if (words[b+1] == 'あ'){
+        //         console.log(words[b])
+        //         console.log(words[b+1])
+        //         console.log('a')
+        //         console.log(b)
+        //     }//testing code for recognition of characters, that are like gyo(ぎょ), gya(ぎゃ) etc., so that if combined kana is in the words, it can be skipped
         // }
-        for (e in words) {
-            b = parseInt(e-1)
-            if (words[b+1] == 'あ'){
-                console.log(words[b])
-                console.log(words[b+1])
-                console.log('a')
-                console.log(b)
-            }//testing code for recognition of characters, that are like gyo(ぎょ), gya(ぎゃ) etc., so that if combined kana is in the words, it can be skipped
-            
-        }
-        
+        //
         // area.val(romaji['あ'])                                                                       TESTING CODE, DO NOT TOUCH
         // for (var letter in words){
         //     console.log(words[letter])
         // }
+        //
         // for(word in words){
         //     for (rword in romaji){
         //         // console.log(rword)
@@ -122,6 +121,19 @@ $(document).ready(function() {
                 //     area.val(area.val() + words[word] + ' IS NOT ' + rword + '\n')
                 // }
         //     }
-        // }
+        // } // kana to romaji test code
+        //
+        // var testword = 'b';
+        // for (each in romaji) {
+        //     for (p in romaji[each]) {
+        //         if (romaji[each][p] === testword.toLowerCase()) {
+        //             area.val(area.val() + `${each} is ${testword}\n`)
+        //             return;
+        //         }
+        //         else {
+        //             area.val(area.val() + `not ${testword}, but ${each} is ${romaji[each][p]}\n`)
+        //         }
+        //     }
+        // } // Written word recognition test code
     });
 });
