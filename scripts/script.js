@@ -2,7 +2,7 @@ $(document).ready(function() {
     var wordlist = [];
     var wordlist2 = [];
     //init word lists
-    var romaji = {'あ': ['a', 'b'], 'う': ['i'], 'ん': ['n'], 'す': ['su'], 'ぎゃ':['gya']}; // the list of kana -> romaji translations. used both ways
+    var romaji = {'あ': ['a'], 'う': ['i'], 'ん': ['n'], 'す': ['su'], 'ぎゃ':['gya']}; // the list of kana -> romaji translations. used both ways
 
 
     $.ajax({
@@ -77,8 +77,8 @@ $(document).ready(function() {
     $('#romajiCheckBtn').click(function(){
         var words = $('#genWordsArea').val().replace(/\s/g,'');
         var area = $('#romajiCheck');
-
-        area.val(``)
+        var areaWords = String(area.val());
+        // area.val(``)
         // if (romaji['あ'].length !== 1) {
         //     area.val(romaji[`う`][1])
         // }                                                                                            TESTING CODE, DO NOT TOUCH
@@ -135,5 +135,93 @@ $(document).ready(function() {
         //         }
         //     }
         // } // Written word recognition test code
+        // var a = 0;
+        // var character = 0;
+        // for (i in areaWords) {
+        //     // if (a > 0){
+        //     //     // console.log("asdas")
+        //     //     // console.log(a)
+        //     //     a = a - 1
+        //     //     continue
+        //     // }
+        //     // console.log(areaWords[i])
+        //     // a = 1
+        //     // console.log(areaWords[i])
+        //     if (a > 0){
+        //         continuel
+        //     }
+        //     if (areaWords[Number(i)] == "g"){
+        //         if (areaWords[Number(i)+1] == "y") {
+        //             if (areaWords[Number(i)+2] == "o"){
+        //                 console.log("gyo")
+        //                 console.log(i)
+        //                 console.log(Number(i)+1)
+        //                 a = a + 2
+        //                 character = character + 1;
+        //             }
+        //         }
+        //     } else {
+        //         // console.log(areaWords[i])
+        //         // console.log(areaWords[Number(i)+Number(1)])
+        //         // console.log(areaWords[Number(i)+Number(2)])
+        //         // console.log(Number(i)+Number(1))
+        //         // console.log(a)
+        //     }
+
+        // }
+        function to_romaji(kana) {
+            for (let i = 0;i<kana.length;i++){
+                if (a > 0){
+                    a=a-1
+                    continue
+                }
+                if(kana[Number(i)] == "g"){
+                    
+                }
+            }
+        }
+        var a = 0;
+        var character = 0;
+        for (i=0;i<areaWords.length;i++) {
+            // console.log(i)
+            // console.log(a)
+            if (a > 0){
+                console.log("continue")
+                a=a-1
+                continue
+            }
+            // console.log(i)
+            // console.log("passed")
+            // a=a+1
+            if (areaWords[Number(i)] == "g"){
+                if (areaWords[Number(i)+1] == "y") {
+                    if (areaWords[Number(i)+2] == "a"){
+                        // console.log("gyo")
+                        // console.log(i)
+                        // console.log(Number(i)+1)
+                        a = a + 2
+                        character = character + 1;
+
+                        for (p in romaji){
+                            var rom = areaWords.slice(Number(i),Number(i)+3)
+                            // console.log(rom)
+                            // // console.log(p)
+                            // // console.log(areaWords.slice(Number(i),Number(i)+3))
+                            // console.log(romaji[p]["gyo"])
+                            // console.log(romaji[p][rom])
+                            // if (romaji[p][1] === (rom)) {
+                            //     console.log(romaji[p][rom])
+                            // }
+                            // console.log(romaji[p])
+                            for (f in romaji[p]){
+                                if (romaji[p][f] === rom){
+                                    console.log(romaji[p][f])
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     });
 });
