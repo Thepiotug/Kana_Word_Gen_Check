@@ -2,7 +2,18 @@ $(document).ready(function() {
     var wordlist = [];
     var wordlist2 = [];
     //init word lists
-    var romaji = {'あ': ['a'], 'う': ['i'], 'ん': ['n'], 'す': ['su'], 'ぎゃ':['gya']}; // the list of kana -> romaji translations. used both ways
+    var romaji = {
+        'あ': ['a'],'い': ['i'], 'う': ['u'], 'え':['e'],'お':['o'], //vowels
+        'か':['ka'],'き':['ki'],'':[''],'':[''],'':[''], // k-
+        '':[''],'':[''],'':[''],'':[''],'':[''], //k- with dakuten, so g-
+        '':[''],'':[''],'':[''],'':[''],'':[''], //s-
+        '':[''],'':[''],'':[''],'':[''],'':[''], //s- with daukuten, so z- (in case of shi with dakuten, ji/zi)
+        '':[''],'':[''],'':[''],'':[''],'':[''], //t-
+        '':[''],'':[''],'':[''],'':[''],'':[''], //t- with dakuten, so d- (in caseof chi with dakuten,ji/zi/di)
+        'す': ['su'], 'ぎゃ':['gya'],
+        'ん': ['n'], /* <- hiragana */
+
+    }; // the list of kana -> romaji translations. used both ways
 
 
     $.ajax({
@@ -176,7 +187,7 @@ $(document).ready(function() {
                     continue
                 }
                 if(kana[Number(i)] == "g"){
-                    
+
                 }
             }
         }
